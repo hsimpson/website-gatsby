@@ -18,6 +18,7 @@
   "rules": {
     // note you must disable the base rule as it can report incorrect errors
     "no-unused-vars": "off",
+    "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
@@ -39,7 +40,7 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": ["error", "unix"],
     "no-warning-comments": "warn",
-    "quotes": ["error", "single"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "semi": ["error", "always"]
     //"sort-imports": "warn"
   },

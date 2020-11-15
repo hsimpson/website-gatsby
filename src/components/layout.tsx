@@ -6,46 +6,25 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
-
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from '../theme';
 import Header from './header';
-import './layout.css';
+import Footer from './footer';
 
-const Layout = ({ children }): React.ReactElement => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || 'Title'} />
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 960,
-          padding: '0 1.0875rem 1.45rem',
-        }}>
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: '2rem',
-          }}>
-          © {new Date().getFullYear()}, Built with <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  );
+type LayoutProps = {
+  children: React.ReactNode;
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+const Layout: React.FC<LayoutProps> = (props: LayoutProps): React.ReactElement => {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header />
+      {props.children}
+      <Footer />
+    </MuiThemeProvider>
+  );
 };
 
 export default Layout;
