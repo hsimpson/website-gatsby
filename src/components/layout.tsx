@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider, createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../theme';
 import Header from './header';
@@ -16,12 +16,23 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    main: {
+      marginTop: 64,
+      // marginBottom: 64,
+      minHeight: 'calc(100vh - 128px)',
+    },
+  })
+);
+
 const Layout: React.FC<LayoutProps> = (props: LayoutProps): React.ReactElement => {
+  const classes = useStyles();
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      {props.children}
+      <div className={classes.main}>{props.children}</div>
       <Footer />
     </MuiThemeProvider>
   );

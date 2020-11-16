@@ -1,35 +1,39 @@
 import React from 'react';
 
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, Avatar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import SocialLinks from './sociallinks';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1,
     },
+
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7),
+    },
+
     sectionDesktop: {
       display: 'none',
       [theme.breakpoints.up('md')]: {
         display: 'flex',
       },
     },
+
     sectionMobile: {
       display: 'flex',
       [theme.breakpoints.up('md')]: {
         display: 'none',
       },
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
+
+    // menuButton: {
+    //   marginRight: theme.spacing(2),
+    // },
 
     link: {
       display: 'flex',
@@ -108,15 +112,36 @@ const Header: React.FC = (): React.ReactElement => {
           </Link>
         </Typography>
       </MenuItem>
+      <SocialLinks></SocialLinks>
     </Menu>
   );
 
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          author
+          description
+          title
+          image
+        }
+      }
+    }
+  `);
+
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar variant="dense">
           <Typography variant="h6" noWrap color="inherit" className={classes.link}>
-            <Link to="/">Daniel</Link>
+            <Link to="/">
+              <Avatar
+                alt={data.site.siteMetadata.title}
+                title={data.site.siteMetadata.title}
+                src={data.site.siteMetadata.image}
+                className={classes.large}
+              />
+            </Link>
           </Typography>
 
           <div className={classes.grow}></div>
@@ -134,6 +159,7 @@ const Header: React.FC = (): React.ReactElement => {
             <Typography variant="body1" className={classes.link}>
               <Link to="#">About</Link>
             </Typography>
+            <SocialLinks></SocialLinks>
           </div>
 
           <div className={classes.sectionMobile}>
