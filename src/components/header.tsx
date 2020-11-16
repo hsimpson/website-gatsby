@@ -6,6 +6,11 @@ import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, Avatar } from 
 import MenuIcon from '@material-ui/icons/Menu';
 import SocialLinks from './sociallinks';
 
+interface PageLink {
+  name: string;
+  to: string;
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
@@ -74,6 +79,25 @@ const Header: React.FC = (): React.ReactElement => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const pageLinks: PageLink[] = [
+    {
+      name: 'Home',
+      to: '/',
+    },
+    {
+      name: 'Projects',
+      to: '/projects',
+    },
+    {
+      name: 'Blog',
+      to: '/blog',
+    },
+    {
+      name: 'About',
+      to: '/about',
+    },
+  ];
+
   const mobileMenuId = 'menu';
   const renderMobileMenu = (
     <Menu
@@ -84,34 +108,13 @@ const Header: React.FC = (): React.ReactElement => {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
-      <MenuItem>
-        <Typography variant="body1">
-          <Link className={classes.linkformobile} to="/">
-            Home
-          </Link>
-        </Typography>
-      </MenuItem>
-      <MenuItem>
-        <Typography variant="body1">
-          <Link className={classes.linkformobile} to="#">
-            Project
-          </Link>
-        </Typography>
-      </MenuItem>
-      <MenuItem>
-        <Typography variant="body1">
-          <Link className={classes.linkformobile} to="#">
-            Blog
-          </Link>
-        </Typography>
-      </MenuItem>
-      <MenuItem>
-        <Typography variant="body1">
-          <Link className={classes.linkformobile} to="#">
-            About
-          </Link>
-        </Typography>
-      </MenuItem>
+      {pageLinks.map((link) => (
+        <Link key={link.name} className={classes.linkformobile} to={link.to}>
+          <MenuItem>
+            <Typography variant="body1">{link.name}</Typography>
+          </MenuItem>
+        </Link>
+      ))}
       <SocialLinks></SocialLinks>
     </Menu>
   );
@@ -147,18 +150,11 @@ const Header: React.FC = (): React.ReactElement => {
           <div className={classes.grow}></div>
 
           <div className={classes.sectionDesktop}>
-            <Typography variant="body1" className={classes.link}>
-              <Link to="/">Home</Link>
-            </Typography>
-            <Typography variant="body1" className={classes.link}>
-              <Link to="#">Project</Link>
-            </Typography>
-            <Typography variant="body1" className={classes.link}>
-              <Link to="#">Blog</Link>
-            </Typography>
-            <Typography variant="body1" className={classes.link}>
-              <Link to="#">About</Link>
-            </Typography>
+            {pageLinks.map((link) => (
+              <Typography key={link.name} variant="body1" className={classes.link}>
+                <Link to={link.to}>{link.name}</Link>
+              </Typography>
+            ))}
             <SocialLinks></SocialLinks>
           </div>
 
