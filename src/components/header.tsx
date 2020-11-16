@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, Avatar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import SocialLinks from './sociallinks';
+import { useSiteMetadata } from '../hooks/useSiteMetaData';
 
 interface PageLink {
   name: string;
@@ -119,18 +120,7 @@ const Header: React.FC = (): React.ReactElement => {
     </Menu>
   );
 
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          author
-          description
-          title
-          image
-        }
-      }
-    }
-  `);
+  const { title, image } = useSiteMetadata();
 
   return (
     <div className={classes.grow}>
@@ -138,12 +128,7 @@ const Header: React.FC = (): React.ReactElement => {
         <Toolbar variant="dense">
           <Typography variant="h6" noWrap color="inherit" className={classes.link}>
             <Link to="/">
-              <Avatar
-                alt={data.site.siteMetadata.title}
-                title={data.site.siteMetadata.title}
-                src={data.site.siteMetadata.image}
-                className={classes.large}
-              />
+              <Avatar alt={title} title={title} src={image} className={classes.large} />
             </Link>
           </Typography>
 

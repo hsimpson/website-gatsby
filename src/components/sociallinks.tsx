@@ -3,7 +3,7 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
     socialLinks: {
       display: 'flex',

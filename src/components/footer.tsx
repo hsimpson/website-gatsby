@@ -1,8 +1,8 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { useSiteMetadata } from '../hooks/useSiteMetaData';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
@@ -37,24 +37,13 @@ const useStyles = makeStyles((theme: Theme) =>
 const Footer: React.FC = (): React.ReactElement => {
   const classes = useStyles();
 
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          author
-          description
-          title
-          image
-        }
-      }
-    }
-  `);
+  const { author } = useSiteMetadata();
 
   return (
     <div className={classes.root}>
       <div className={classes.footer}>
         <div>
-          &copy; {new Date().getFullYear()} by {data.site.siteMetadata.author}. All rights reserved.
+          &copy; {new Date().getFullYear()} by {author}. All rights reserved.
         </div>
         <div className={classes.grow}></div>
         <div>
