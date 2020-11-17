@@ -32,23 +32,28 @@ const SocialLinks: React.FC = (): React.ReactElement => {
   const links: ISocialLink[] = [
     {
       name: 'github',
-      image: './images/social/github.svg',
+      image: '/images/social/github.svg',
       to: 'https://github.com/hsimpson',
     },
     {
       name: 'twitter',
-      image: './images/social/twitter-official.svg',
+      image: '/images/social/twitter-official.svg',
       to: 'https://twitter.com/daniel_toplak',
     },
     {
       name: 'twitch',
-      image: './images/social/twitch-icon.svg',
+      image: '/images/social/twitch-icon.svg',
       to: 'https://www.twitch.tv/donnerknalli',
     },
     {
       name: 'discord',
-      image: './images/social/discord-tile.svg',
+      image: '/images/social/discord-tile.svg',
       to: 'https://discord.gg/MV9hGqk',
+    },
+    {
+      name: 'linkedin',
+      image: '/images/social/linkedin-icon.svg',
+      to: 'https://www.linkedin.com/in/daniel-toplak-37593198',
     },
   ];
 

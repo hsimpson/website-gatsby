@@ -3,7 +3,7 @@ module.exports = {
     title: `Daniel's Website`,
     description: 'This is my development website, with some of my projects',
     author: 'Daniel',
-    image: './images/profile.png',
+    image: '/images/profile.png',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -12,6 +12,21 @@ module.exports = {
       options: {
         name: 'src',
         path: `${__dirname}/src/`,
+      },
+    },
+    // blog sources
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: 'blog',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/projects`,
+        name: 'projects',
       },
     },
     {
@@ -29,6 +44,33 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: ['.mdx'],
+        defaultLayouts: {
+          posts: require.resolve('./src/templates/blogpost.tsx'),
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
+    // 'gatsby-plugin-feed-mdx',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

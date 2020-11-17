@@ -1,16 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
-
-interface ISiteMetaData {
-  author: string;
-  description: string;
-  image: string;
-  title: string;
-}
+import { ISiteMetaData } from '../interfaces';
 
 export const useSiteMetadata = (): ISiteMetaData => {
   const { site } = useStaticQuery(
     graphql`
-      query SITE_METADATA_QUERY {
+      query SiteMetaDataQuery {
         site {
           siteMetadata {
             author

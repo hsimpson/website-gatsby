@@ -16,7 +16,7 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
     main: {
       marginTop: 64,
