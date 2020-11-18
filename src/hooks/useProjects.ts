@@ -13,6 +13,14 @@ export const useProjects = (): IProject[] => {
               description
               tags
               title
+              cover {
+                childImageSharp {
+                  id
+                  fluid {
+                    src
+                  }
+                }
+              }
             }
             slug
           }

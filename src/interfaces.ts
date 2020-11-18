@@ -13,7 +13,11 @@ export interface IProject {
     tags: string[];
     title: string;
     cover: {
-      relativePath: string;
+      childImageSharp: {
+        fluid: {
+          src: string;
+        };
+      };
     };
   };
   slug: string;

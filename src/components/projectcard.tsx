@@ -26,6 +26,11 @@ const useStyles = makeStyles((_theme: Theme) =>
     image: {
       backgroundColor: '#c92d2d',
       height: '120px',
+      '& img': {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      },
     },
     text: {
       flexGrow: 1,
@@ -42,7 +47,9 @@ const ProjectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps): React
     <Paper className={classes.paper}>
       <Link className={classes.link} to={`/${props.project.slug}`}>
         <div className={classes.image}>
-          <img src={props.project.frontmatter.cover?.relativePath} alt={props.project.frontmatter.title}></img>
+          <img
+            src={props.project.frontmatter.cover.childImageSharp.fluid.src}
+            alt={props.project.frontmatter.title}></img>
         </div>
         <div className={classes.text}>
           <Box padding={0.5}>
