@@ -5,7 +5,10 @@ export const useProjects = (): IProject[] => {
   const { allMdx } = useStaticQuery(
     graphql`
       query ProjectsQuery {
-        allMdx(filter: { frontmatter: { type: { eq: "project" } } }) {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "project" }, published: { eq: true } } }
+          sort: { fields: frontmatter___date, order: DESC }
+        ) {
           nodes {
             frontmatter {
               type

@@ -2,6 +2,9 @@ import React from 'react';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconPrefix, IconName } from '@fortawesome/fontawesome-svg-core';
+import '../fontawsome';
 
 const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
@@ -9,21 +12,29 @@ const useStyles = makeStyles((_theme: Theme) =>
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
+      margin: '0 5px',
     },
+    // link: {
+    //   // margin: '0 5px',
+    //   '& img': {
+    //     width: '60%',
+    //     height: 'auto',
+    //   },
+    // },
     link: {
-      // margin: '0 5px',
-      '& img': {
-        width: '60%',
-        height: 'auto',
-      },
+      fontSize: '1.5em',
+      color: '#ffffff',
+      margin: '0 10px',
     },
   })
 );
 
 interface ISocialLink {
   name: string;
-  image: string;
+  // image: string;
   to: string;
+  faPrefix: string;
+  faIcon: string;
 }
 
 const SocialLinks: React.FC = (): React.ReactElement => {
@@ -32,27 +43,32 @@ const SocialLinks: React.FC = (): React.ReactElement => {
   const links: ISocialLink[] = [
     {
       name: 'github',
-      image: '/images/social/github.svg',
+      faPrefix: 'fab',
+      faIcon: 'github',
       to: 'https://github.com/hsimpson',
     },
     {
       name: 'twitter',
-      image: '/images/social/twitter-official.svg',
+      faPrefix: 'fab',
+      faIcon: 'twitter',
       to: 'https://twitter.com/daniel_toplak',
     },
     {
       name: 'twitch',
-      image: '/images/social/twitch-icon.svg',
+      faPrefix: 'fab',
+      faIcon: 'twitch',
       to: 'https://www.twitch.tv/donnerknalli',
     },
     {
       name: 'discord',
-      image: '/images/social/discord-tile.svg',
+      faPrefix: 'fab',
+      faIcon: 'discord',
       to: 'https://discord.gg/MV9hGqk',
     },
     {
       name: 'linkedin',
-      image: '/images/social/linkedin-icon.svg',
+      faPrefix: 'fab',
+      faIcon: 'linkedin',
       to: 'https://www.linkedin.com/in/daniel-toplak-37593198',
     },
   ];
@@ -61,7 +77,10 @@ const SocialLinks: React.FC = (): React.ReactElement => {
     <div className={classes.socialLinks}>
       {links.map((link) => (
         <a key={link.name} href={link.to} rel="noreferrer" target="_blank">
-          <Avatar className={classes.link} variant="square" alt={link.name} src={link.image}></Avatar>
+          {/* <Avatar className={classes.link} variant="square" alt={link.name} src={link.image}></Avatar> */}
+          <FontAwesomeIcon
+            className={classes.link}
+            icon={[link.faPrefix as IconPrefix, link.faIcon as IconName]}></FontAwesomeIcon>
         </a>
       ))}
     </div>
