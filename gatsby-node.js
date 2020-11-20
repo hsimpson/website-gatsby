@@ -15,31 +15,36 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
+  const blogPostTemplate = path.resolve('./src/templates/project.tsx');
 
-  const result = await graphql(`
-    query {
+  return graphql(`
+    {
       allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
           }
         }
       }
     }
-  `);
+  `).then((result) => {
+    if (result.errors) {
+      throw result.errors;
+    }
 
-  // console.log(JSON.stringify(result, null, 4));
-  result.data.allMdx.edges.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/templates/project.tsx`),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        slug: node.fields.slug,
-      },
+    const posts = result.data.allMdx.nodes;
+    // create page for each mdx file
+    posts.forEach((post) => {
+      createPage({
+        path: post.fields.slug,
+        component: blogPostTemplate,
+        context: {
+          slug: post.fields.slug,
+        },
+      });
     });
   });
 };

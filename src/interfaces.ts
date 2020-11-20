@@ -8,7 +8,7 @@ export interface ISiteMetaData {
 export interface IProject {
   frontmatter: {
     type: 'post';
-    date: string;
+    dateCreated: string;
     description: string;
     tags: string[];
     title: string;

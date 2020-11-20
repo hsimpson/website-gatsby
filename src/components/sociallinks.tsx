@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Avatar } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { IconPrefix, IconName } from '@fortawesome/fontawesome-svg-core';
 import '../fontawsome';
@@ -70,6 +69,12 @@ const SocialLinks: React.FC = (): React.ReactElement => {
       faPrefix: 'fab',
       faIcon: 'linkedin',
       to: 'https://www.linkedin.com/in/daniel-toplak-37593198',
+    },
+    {
+      name: 'youtube',
+      faPrefix: 'fab',
+      faIcon: 'youtube',
+      to: 'https://www.youtube.com/channel/UCG_DSyi9GdeEVyzUUfVOxSQ',
     },
   ];
 

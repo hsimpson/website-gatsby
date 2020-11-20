@@ -39,6 +39,10 @@ module.exports = {
                 family: 'Barlow',
                 variants: ['300', '400', '500', '600'],
               },
+              {
+                family: 'Fira Code',
+                variants: ['300', '400', '500', '600'],
+              },
             ],
           },
         },
@@ -55,15 +59,34 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 800,
+              // showCaptions: true, // does not look good (alignment)
+              wrapperStyle: 'margin-left: 0;',
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: 'gatsby-remark-embed-video',
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              width: 640,
+              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
+              height: 320, // Optional: Overrides optional.ratio
+              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true, //Optional: Disable insertion of <style> border: 0
+              // urlOverrides: [
+              //   {
+              //     id: 'youtube',
+              //     embedURL: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}`,
+              //   },
+              // ], //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
+              // containerClass: 'embedVideo-container', //Optional: Custom CSS class for iframe container, for multiple classes separate them by space
             },
           },
+          // {
+          //   resolve: `gatsby-remark-responsive-iframe`,
+          //   options: {
+          //     wrapperStyle: `margin-bottom: 1.0725rem`,
+          //   },
+          // },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
@@ -73,18 +96,18 @@ module.exports = {
     // 'gatsby-plugin-feed-mdx',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'Daniel',
-        short_name: 'Daniel',
-        start_url: '/',
-        background_color: '#303030',
-        theme_color: '#9c27b0',
-        display: 'standalone',
-        // icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     name: 'Daniel',
+    //     short_name: 'Daniel',
+    //     start_url: '/',
+    //     background_color: '#303030',
+    //     theme_color: '#9c27b0',
+    //     display: 'standalone',
+    //     // icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+    //   },
+    // },
     'gatsby-plugin-offline',
   ],
 };

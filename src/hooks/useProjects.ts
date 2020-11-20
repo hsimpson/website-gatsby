@@ -7,12 +7,12 @@ export const useProjects = (): IProject[] => {
       query ProjectsQuery {
         allMdx(
           filter: { frontmatter: { type: { eq: "project" }, published: { eq: true } } }
-          sort: { fields: frontmatter___date, order: DESC }
+          sort: { fields: frontmatter___dateCreated, order: DESC }
         ) {
           nodes {
             frontmatter {
               type
-              date
+              dateCreated
               description
               tags
               title
