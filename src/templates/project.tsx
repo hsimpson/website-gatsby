@@ -67,7 +67,7 @@ const Project: React.FC<ProjectSite> = (props: ProjectSite): React.ReactElement 
         </Typography>
         <Typography variant="caption" color="textSecondary" component="p">
           {`Created: ${getLocaleDate(frontmatter.dateCreated)}`}
-          {frontmatter.dateUpdated ? `\u00A0\u00A0•\u00A0\u00A0updated: ${getLocaleDate(frontmatter.dateCreated)}` : ''}
+          {frontmatter.dateUpdated ? `\u00A0\u00A0•\u00A0\u00A0updated: ${getLocaleDate(frontmatter.dateUpdated)}` : ''}
         </Typography>
         <div className={classes.mdxbody}>
           <MDXRenderer>{body}</MDXRenderer>
