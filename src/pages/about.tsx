@@ -1,14 +1,73 @@
 import React from 'react';
 
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { Avatar, Box, Typography } from '@material-ui/core';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import { useSiteMetadata } from '../hooks/useSiteMetaData';
+import { Link } from 'gatsby';
+
+const useStyles = makeStyles((_theme: Theme) =>
+  createStyles({
+    root: {
+      padding: '16px',
+      flexGrow: 1,
+      '& p': {
+        fontSize: '1rem',
+      },
+    },
+    centerimg: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    largeimg: {
+      width: '200px',
+      height: '200px',
+    },
+    link: {
+      color: '#8ab4f8',
+      textDecoration: 'underline dotted',
+      '&:hover': {
+        color: '#d2603a',
+      },
+    },
+  })
+);
 
 const AboutPage = (): React.ReactElement => {
+  const { author } = useSiteMetadata();
+  const classes = useStyles();
+
   return (
     <Layout>
       <SEO title="About" />
-      <h1>About me</h1>
-      <p>{'this is me ;-)'}</p>
+      <div className={classes.root}>
+        <h1>About me</h1>
+        <div className={classes.centerimg}>
+          <Avatar className={classes.largeimg} src="/images/me.jpg"></Avatar>
+        </div>
+        {/* <Typography variant="body1" color="textSecondary" component="p" noWrap> */}
+        {/* </Typography> */}
+        <p>My name is {author}, I am from Gersthofen a small city in Bavaria, Germany.</p>
+        <p>
+          At my daily job I lead a development team, we are developing frontend web applications and mobile applications
+          for iOS and Android
+        </p>
+        <p>
+          In my freetime I do graphics programming for the web, with WebGL and WebGPU. See some of my{' '}
+          <Link className={classes.link} to={`/projects`}>
+            projects.
+          </Link>
+        </p>
+        <p>
+          Technologies used in my projects:
+          <ul>
+            <li>Languages: TypeScript, JavaScript, C++, GLSL, Python, Java, Swift, SCSS, HTML5</li>
+            <li>Web frameworks and libraries: React, Express, Node, WebGL, Three.js</li>
+            <li>Other libs and tech: Docker, Vulkan, OpenGL, Augmented Reality</li>
+          </ul>
+        </p>
+      </div>
     </Layout>
   );
 };

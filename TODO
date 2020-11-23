@@ -1,4 +1,6 @@
 Components:
+  Common:
+    ☐ Move some common styles to centralized place (like the 'link')
   Header:
     ☐ Theme switcher
 

@@ -33,9 +33,6 @@ const ProjectPage = (): React.ReactElement => {
           {projects.map((project) => (
             <ProjectCard key={project.frontmatter.title} project={project}></ProjectCard>
           ))}
-          {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
-            <Paper key={value} className={classes.paper}></Paper>
-          ))} */}
         </div>
       </div>
     </Layout>

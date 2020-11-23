@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Daniel's Website`,
-    description: 'This is my development website, with some of my projects',
-    author: 'Daniel',
+    title: `Daniel Toplak's Website`,
+    description: 'This is my development website, with some of my projects and blog posts',
+    author: 'Daniel Toplak',
     image: '/images/profile.png',
   },
   plugins: [
