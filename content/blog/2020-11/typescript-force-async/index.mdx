@@ -1,0 +1,49 @@
+---
+published: true
+type: post
+title: Force to handling promises in TypeScript
+dateCreated: 2020-11-16T21:40:00.000Z
+dateUpdated: 2020-11-23T20:00:00.000Z
+description: Improve code quality and reduce errors with asyc/await and promises
+tags:
+  - TypeScript
+  - Linting
+  - Code quality
+---
+
+To improve the code quality and reduce errors in TypeScript when using [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) and/or [async functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) there are some ESLint rules:
+
+1. [@typescript-eslint/no-floating-promises](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-floating-promises.md)  
+   This rule forces to handle promises, to enable this rule you need to add it to your eslint rule config:
+
+   ```JSON
+   "rules": {
+       "@typescript-eslint/no-floating-promises": "error",
+   }
+   ```
+
+2. [@typescript-eslint/promise-function-async](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/promise-function-async.md)
+   This rule forces to use `async` on a function which returns a `Promise`, to enable this rule you need to add it to your eslint rule config:
+
+   ```JSON
+   "rules": {
+       "@typescript-eslint/promise-function-async": "error",
+   }
+   ```
+
+3. [@typescript-eslint/require-await](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/require-await.md)
+   This rule forbids `async` on a function which has no `await` or does not return a `Promise`, to enable this rule you need to add it to your eslint rule config:
+
+   ```JSON
+   "rules": {
+       "@typescript-eslint/require-await": "error",
+   }
+   ```
+
+All 3 rules need to have the `project` configured in the `parserOptions`:
+
+```JSON
+"parserOptions": {
+    "project": "./tsconfig.json"
+},
+```

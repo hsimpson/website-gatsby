@@ -7,7 +7,7 @@ export interface ISiteMetaData {
 
 export interface IProject {
   frontmatter: {
-    type: 'post';
+    type: 'project';
     dateCreated: string;
     description: string;
     tags: string[];
@@ -19,6 +19,17 @@ export interface IProject {
         };
       };
     };
+  };
+  slug: string;
+}
+
+export interface IPost {
+  frontmatter: {
+    type: 'post';
+    dateCreated: string;
+    description: string;
+    tags: string[];
+    title: string;
   };
   slug: string;
 }

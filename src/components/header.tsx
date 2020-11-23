@@ -89,10 +89,10 @@ const Header: React.FC = (): React.ReactElement => {
       name: 'Projects',
       to: '/projects',
     },
-    // {
-    //   name: 'Blog',
-    //   to: '/blog',
-    // },
+    {
+      name: 'Posts',
+      to: '/posts',
+    },
     {
       name: 'About',
       to: '/about',
