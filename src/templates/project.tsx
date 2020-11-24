@@ -41,14 +41,17 @@ const useStyles = makeStyles((_theme: Theme) =>
           // textDecoration: 'none',
         },
       },
-      '& code': {
-        backgroundColor: '#202020',
-        color: '#d2603a',
-        fontSize: '.75em',
-        padding: '3px 5px',
-        margin: '0 0.15rem',
-        borderRadius: '4px',
-        fontFamily: 'Fira Code',
+      '& p': {
+        '& code': {
+          // this is used for inline code
+          backgroundColor: '#202020',
+          color: '#d2603a',
+          fontSize: '.75em',
+          padding: '3px 5px',
+          margin: '0 0.15rem',
+          borderRadius: '4px',
+          fontFamily: 'Fira Code',
+        },
       },
     },
   })
