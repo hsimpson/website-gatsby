@@ -1,20 +1,18 @@
-import React from 'react';
-
+import { Avatar } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Avatar, Box, Typography } from '@material-ui/core';
+import { Link } from 'gatsby';
+import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
-import { Link } from 'gatsby';
 
 const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
     root: {
       padding: '16px',
       flexGrow: 1,
-      '& p': {
-        fontSize: '1rem',
-      },
+      fontSize: '1rem',
+      // '& p': {},
     },
     centerimg: {
       display: 'flex',
@@ -46,8 +44,6 @@ const AboutPage = (): React.ReactElement => {
         <div className={classes.centerimg}>
           <Avatar className={classes.largeimg} src="/images/me.jpg"></Avatar>
         </div>
-        {/* <Typography variant="body1" color="textSecondary" component="p" noWrap> */}
-        {/* </Typography> */}
         <p>My name is {author}, I am from Gersthofen a small city in Bavaria, Germany.</p>
         <p>
           At my daily job I lead a development team, we are developing frontend web applications and mobile applications
@@ -59,14 +55,12 @@ const AboutPage = (): React.ReactElement => {
             projects.
           </Link>
         </p>
-        <p>
-          Technologies used in my projects:
-          <ul>
-            <li>Languages: TypeScript, JavaScript, C++, GLSL, Python, Java, Swift, SCSS, HTML5</li>
-            <li>Web frameworks and libraries: React, Express, Node, WebGL, Three.js</li>
-            <li>Other libs and tech: Docker, Vulkan, OpenGL, Augmented Reality</li>
-          </ul>
-        </p>
+        Technologies used in my projects:
+        <ul>
+          <li>Languages: TypeScript, JavaScript, C++, GLSL, Python, Java, Swift, SCSS, HTML5</li>
+          <li>Web frameworks and libraries: React, Express, Node, WebGL, Three.js</li>
+          <li>Other libs and tech: Docker, Vulkan, OpenGL, Augmented Reality</li>
+        </ul>
       </div>
     </Layout>
   );
