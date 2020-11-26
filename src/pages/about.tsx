@@ -46,8 +46,8 @@ const AboutPage = (): React.ReactElement => {
         </div>
         <p>My name is {author}, I am from Gersthofen a small city in Bavaria, Germany.</p>
         <p>
-          At my daily job I lead a development team, we are developing frontend web applications and mobile applications
-          for iOS and Android
+          At my daily job I lead a development team, we are developing frontend web applications, web components and
+          mobile applications for iOS and Android
         </p>
         <p>
           In my freetime I do graphics programming for the web, with WebGL and WebGPU. See some of my{' '}
