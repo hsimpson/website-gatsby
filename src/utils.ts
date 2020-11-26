@@ -6,7 +6,12 @@ export function getLocaleDate(isoDateString): string {
     year: 'numeric',
   };
 
+  let lang = 'en';
+  if (typeof navigator !== 'undefined') {
+    lang = navigator.language;
+  }
+
   const date = new Date(isoDateString);
-  const dateTimeFormat = new Intl.DateTimeFormat(navigator.language, options);
+  const dateTimeFormat = new Intl.DateTimeFormat(lang, options);
   return dateTimeFormat.format(date);
 }
