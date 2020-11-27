@@ -68,7 +68,7 @@ const IndexPage = (): React.ReactElement => {
           </Link>
         </p>
         <p>
-          Ther is also some more information{' '}
+          There are also some more information{' '}
           <Link className={classes.link} to={`/about`}>
             about me.
           </Link>
